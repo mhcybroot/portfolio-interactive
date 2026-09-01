@@ -142,33 +142,33 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
       <div className="max-w-5xl mx-auto text-center relative z-10">
         
         {/* Status Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0d1527]/90 border border-[#1f2e4d] backdrop-blur-md mb-6 shadow-lg shadow-black/40">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0b1222]/90 border border-[#1f2e4d] backdrop-blur-md mb-6 shadow-lg shadow-black/40">
           <span className="w-2.5 h-2.5 rounded-full bg-[#00f5d4] animate-pulse" />
-          <span className="text-xs font-mono text-slate-300">
+          <span className="text-xs font-mono font-medium tracking-wider text-slate-300 uppercase">
             {personalInfo.status}
           </span>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4">
-          Engineering Resilient <br />
+        {/* Main Headline with Optical Letter-Spacing and Shimmer */}
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 leading-[1.08]">
+          <span className="text-shimmer">Engineering Resilient</span> <br />
           <span className="cyber-gradient-text">Systems & Software</span>
         </h1>
 
         {/* Dynamic Typing Title */}
         <div className="h-10 sm:h-12 flex items-center justify-center mb-6">
-          <div className="font-mono text-lg sm:text-2xl text-slate-300 flex items-center gap-1">
+          <div className="font-mono text-base sm:text-xl font-semibold text-slate-300 flex items-center gap-1.5">
             <span className="text-[#00f5d4] font-bold">&gt;</span>
-            <span>{displayedText}</span>
-            <span className="w-2.5 h-6 bg-[#00f5d4] animate-pulse inline-block ml-1" />
+            <span className="tracking-wide">{displayedText}</span>
+            <span className="w-2.5 h-5 bg-[#00f5d4] animate-pulse inline-block ml-0.5" />
           </div>
         </div>
 
-        {/* Value Proposition Description */}
-        <p className="max-w-3xl mx-auto text-sm sm:text-base text-slate-300/90 leading-relaxed mb-10">
-          Bridging high-concurrency backends (<strong className="text-white">Java 21 Spring Boot</strong>, <strong className="text-white">Rust 2024 Axum</strong>), 
-          native edge IoT protocols (<strong className="text-cyan-300">ZKTeco ADMS, Frigate AI, RTSP CCTV</strong>), and responsive 3D web platforms (<strong className="text-white">React 19, Three.js</strong>). 
-          Proven track record with 10 verified production repositories and 4 live commercial deployments.
+        {/* Value Proposition Description with Tech Pills */}
+        <p className="max-w-3xl mx-auto text-sm sm:text-base text-slate-300/90 leading-relaxed mb-10 font-normal">
+          Bridging high-concurrency backends (<span className="tech-pill mx-0.5">Java 21 Spring Boot</span>, <span className="tech-pill mx-0.5">Rust 2024 Axum</span>), 
+          native edge IoT protocols (<span className="tech-pill mx-0.5">ZKTeco ADMS</span>, <span className="tech-pill mx-0.5">Frigate AI</span>, <span className="tech-pill mx-0.5">RTSP CCTV</span>), and responsive 3D web platforms (<span className="tech-pill mx-0.5">React 19 / Three.js</span>). 
+          Backed by 10 verified production repositories and 4 live commercial deployments.
         </p>
 
         {/* Magnetic Action CTAs */}
@@ -183,7 +183,7 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
 
           <MagneticButton
             onClick={onOpenTerminal}
-            className="px-6 py-3 rounded-xl bg-[#0d1527] border border-[#1f2e4d] text-slate-200 hover:text-[#00f5d4] hover:border-[#00f5d4]/50 font-mono text-sm shadow-md"
+            className="px-6 py-3 rounded-xl bg-[#0b1222] border border-[#1f2e4d] text-slate-200 hover:text-[#00f5d4] hover:border-[#00f5d4]/50 font-mono text-sm shadow-md"
           >
             <Terminal className="w-4 h-4 text-[#00f5d4] mr-2" />
             <span>Launch CLI Terminal</span>
@@ -191,7 +191,7 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
 
           <MagneticButton
             href="#deployments"
-            className="px-6 py-3 rounded-xl bg-[#0d1527]/80 border border-[#1f2e4d] text-slate-300 hover:text-white font-medium text-sm"
+            className="px-6 py-3 rounded-xl bg-[#0b1222]/80 border border-[#1f2e4d] text-slate-300 hover:text-white font-medium text-sm"
           >
             <Globe className="w-4 h-4 text-purple-400 mr-2" />
             <span>Live Sites</span>
@@ -205,14 +205,14 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
               key={idx}
               className="p-4 text-center group"
             >
-              <div className="font-mono text-2xl sm:text-3xl font-extrabold text-[#00f5d4] group-hover:scale-110 transition-transform">
+              <div className="font-mono text-2xl sm:text-3xl font-black tracking-tight text-[#00f5d4] group-hover:scale-110 transition-transform">
                 <AnimatedCounter value={metric.value} />
                 {metric.value.includes('+') && '+'}
               </div>
               <div className="text-xs font-semibold text-slate-200 mt-1">
                 {metric.label}
               </div>
-              <div className="text-[10px] font-mono text-slate-400 mt-0.5">
+              <div className="text-[10px] font-mono tracking-wider uppercase text-slate-400 mt-0.5">
                 {metric.unit}
               </div>
             </SpotlightCard>

@@ -5,12 +5,22 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   body {
     background-color: #060a14;
     color: #e2e8f0;
     overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.011em;
   }
+  
+  /* Monospace Slashed Zeros & Tabular Figures */
+  code, pre, kbd, .font-mono {
+    font-family: 'Geist Mono', 'Fira Code', monospace;
+    font-feature-settings: 'zero' 1, 'tnum' 1, 'ss01' 1;
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 7px;
@@ -43,12 +53,48 @@
     box-shadow: 0 10px 30px -10px rgba(0, 245, 212, 0.15);
     transform: translateY(-3px);
   }
+  
+  /* Cyber Gradient Text */
   .cyber-gradient-text {
-    background: linear-gradient(135deg, #00f5d4 0%, #3b82f6 50%, #a855f7 100%);
+    background: linear-gradient(135deg, #00f5d4 0%, #38bdf8 50%, #a855f7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
+  /* Animated Metallic Text Shimmer */
+  .text-shimmer {
+    background: linear-gradient(
+      110deg,
+      #ffffff 35%,
+      #00f5d4 50%,
+      #ffffff 65%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-sweep 6s infinite ease-in-out;
+  }
+
+  @keyframes shimmer-sweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Tech Highlight Pills */
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.375rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background-color: rgba(0, 245, 212, 0.08);
+    border: 1px solid rgba(0, 245, 212, 0.25);
+    color: #00f5d4;
+  }
+
   /* Cyber Blueprint Dot Matrix Grid */
   .bg-cyber-grid {
     background-image: 
