@@ -17,10 +17,11 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
 
   const navLinks = [
     { name: "Overview", href: "#hero" },
+    { name: "Case Studies", href: "#case-studies" },
+    { name: "Trade-offs", href: "#decision-matrix" },
     { name: "Architecture", href: "#architecture" },
     { name: "Repositories", href: "#repositories" },
-    { name: "Live Deployments", href: "#deployments" },
-    { name: "Skills", href: "#skills" },
+    { name: "Deployments", href: "#deployments" },
     { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
@@ -51,12 +52,12 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-[#00f5d4] transition-colors hover:scale-105"
+              className="text-xs font-medium text-slate-300 hover:text-[#00f5d4] transition-colors hover:scale-105"
             >
               {link.name}
             </a>
@@ -64,12 +65,12 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
         </nav>
 
         {/* Action Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-3">
           
           {/* Quick Terminal Trigger */}
           <button
             onClick={onOpenTerminal}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#0d1527] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] hover:border-[#00f5d4]/40 text-xs font-mono transition-all shadow-sm"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0d1527] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] hover:border-[#00f5d4]/40 text-xs font-mono transition-all shadow-sm"
             title="Open Interactive Terminal"
           >
             <Terminal className="w-3.5 h-3.5 text-[#00f5d4]" />
@@ -80,11 +81,11 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
           <div className="relative">
             <button
               onClick={() => setCvDropdownOpen(!cvDropdownOpen)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-semibold text-xs transition-all shadow-md shadow-[#00f5d4]/20 hover:shadow-[#00f5d4]/40 hover:opacity-95"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-semibold text-xs transition-all shadow-md shadow-[#00f5d4]/20 hover:shadow-[#00f5d4]/40 hover:opacity-95"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Download CV</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${cvDropdownOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-3 h-3 transition-transform ${cvDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {cvDropdownOpen && (
@@ -126,7 +127,7 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg bg-[#0d1527] border border-[#1f2e4d] text-slate-300 hover:text-white"
@@ -138,13 +139,13 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#080d1a]/95 backdrop-blur-xl border-b border-[#1f2e4d] px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden bg-[#080d1a]/95 backdrop-blur-xl border-b border-[#1f2e4d] px-4 pt-3 pb-6 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-[#0d1527] hover:text-[#00f5d4]"
+              className="block px-3 py-1.5 rounded-lg text-xs font-medium text-slate-200 hover:bg-[#0d1527] hover:text-[#00f5d4]"
             >
               {link.name}
             </a>
@@ -155,17 +156,17 @@ export default function Navbar({ onOpenResume, onOpenTerminal }) {
                 setMobileMenuOpen(false);
                 onOpenTerminal();
               }}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#0d1527] border border-[#1f2e4d] text-slate-200 text-xs font-mono"
+              className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-[#0d1527] border border-[#1f2e4d] text-slate-200 text-xs font-mono"
             >
-              <Terminal className="w-4 h-4 text-[#00f5d4]" />
+              <Terminal className="w-3.5 h-3.5 text-[#00f5d4]" />
               <span>Open Developer CLI</span>
             </button>
             <a
               href={personalInfo.cvPdf}
               download="MAHMUDUL_HASAN_CV.pdf"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs"
+              className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-3.5 h-3.5" />
               <span>Download Master CV (PDF)</span>
             </a>
           </div>

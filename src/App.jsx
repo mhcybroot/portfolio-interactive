@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import CaseStudies from './components/CaseStudies';
+import DecisionMatrix from './components/DecisionMatrix';
 import ArchitectureFlow from './components/ArchitectureFlow';
+import TelemetryMonitor from './components/TelemetryMonitor';
 import GitHubVisualizer from './components/GitHubVisualizer';
 import LiveDeployments from './components/LiveDeployments';
 import PolyglotMatrix from './components/PolyglotMatrix';
@@ -25,13 +28,19 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
+      <main className="flex-1 space-y-4 sm:space-y-8">
         <Hero
           onOpenTerminal={() => setIsTerminalOpen(true)}
           onOpenResume={() => setIsResumeOpen(true)}
         />
 
+        <CaseStudies />
+
+        <DecisionMatrix />
+
         <ArchitectureFlow />
+
+        <TelemetryMonitor />
 
         <GitHubVisualizer />
 
