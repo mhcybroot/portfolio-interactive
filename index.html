@@ -5,17 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Primary Meta Tags -->
+    <!-- Primary Search Meta Tags -->
     <title>Mahmudul Hasan | Full-Stack Software & Systems Engineer</title>
     <meta name="title" content="Mahmudul Hasan | Full-Stack Software & Systems Engineer" />
-    <meta name="description" content="Portfolio & Systems Engineering Hub for Mahmudul Hasan. Specializing in high-concurrency Rust 2024, Java 21 Spring Boot, React 19, IoT (ZKTeco ADMS, Frigate AI), and DevOps." />
-    <meta name="keywords" content="Mahmudul Hasan, Full Stack Engineer, Systems Architect, Rust Developer, Spring Boot, React 19, ZKTeco ADMS, IoT Engineer, Dhaka Bangladesh, SeaORM, Axum" />
+    <meta name="description" content="Portfolio & Systems Engineering Hub for Mahmudul Hasan. Specializing in high-concurrency Rust 2024 (Axum/Tokio), Java 21 Spring Boot, React 19, IoT protocols (ZKTeco ADMS, RTSP CCTV), and PostgreSQL." />
+    <meta name="keywords" content="Mahmudul Hasan, Full Stack Engineer, Systems Architect, Rust Developer, Spring Boot 3.4, React 19, ZKTeco ADMS, IoT Engineer, Dhaka Bangladesh, SeaORM, Axum Tokio, Software Engineer Portfolio" />
     <meta name="author" content="Mahmudul Hasan" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="theme-color" content="#060a14" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Google & Search Verification Placeholders -->
+    <meta name="google-site-verification" content="google-search-console-verification" />
+    <meta name="msvalidate.01" content="bing-webmaster-verification" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://github.com/mhcybroot/portfolio-interactive" />
+
+    <!-- Performance: DNS Prefetch & Preconnect for Core Web Vitals -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="profile" />
@@ -35,11 +46,9 @@
     <meta name="twitter:image" content="/og-image.svg" />
 
     <!-- Google Fonts: Geist Mono & Inter Variable -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD Schema.org Structured Data (Person & ProfilePage) -->
+    <!-- Comprehensive Google Structured Data (JSON-LD Graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -63,7 +72,7 @@
             {
               "@type": "EducationalOrganization",
               "name": "Dhaka Polytechnic Institute (DPI)",
-              "award": "Diploma in Computer Science & Technology (CGPA: 3.75/4.00)"
+              "award": "Diploma in Computer Science & Technology (CGPA: 3.75/4.00 Distinction)"
             },
             {
               "@type": "EducationalOrganization",
@@ -73,7 +82,8 @@
           ],
           "sameAs": [
             "https://github.com/mhcybroot",
-            "https://linkedin.com/in/mhcybroot"
+            "https://linkedin.com/in/mhcybroot",
+            "https://wa.me/8801410749454"
           ],
           "knowsAbout": [
             "Rust 2024",
@@ -81,6 +91,7 @@
             "Tokio Async Runtime",
             "Java 21",
             "Spring Boot 3.4/4.0",
+            "Spring Security 6",
             "ZKTeco ADMS Push Protocol",
             "Frigate NVR AI Computer Vision",
             "RTSP CCTV Video Streaming",
@@ -103,6 +114,97 @@
             "@id": "https://github.com/mhcybroot#person"
           },
           "description": "Interactive developer portfolio showcasing verified systems repositories, edge IoT architectures, and live commercial web platforms."
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "PMS-V2 Smart Parking Management System",
+          "description": "High-concurrency Smart Parking backend with Rust (Axum + Tokio), ZKTeco barrier ADMS control, RTSP CCTV streams, and Flutter BLoC client.",
+          "programmingLanguage": "Rust",
+          "runtimePlatform": "Linux, Tokio, SeaORM, PostgreSQL",
+          "codeRepository": "https://github.com/mhcybroot/PMS-V2",
+          "author": { "@id": "https://github.com/mhcybroot#person" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Skylink Custom Backend HRMS",
+          "description": "Enterprise HRMS, biometric attendance stream ingestion, and automated payroll calculation backend with Java 21 Spring Boot and PostgreSQL.",
+          "programmingLanguage": "Java",
+          "runtimePlatform": "Java 21, Spring Boot 3.4, ZKTeco ADMS, PostgreSQL",
+          "codeRepository": "https://github.com/mhcybroot/Skylink-custom-backend",
+          "author": { "@id": "https://github.com/mhcybroot#person" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Watch Employee Productivity Suite",
+          "description": "Employee activity telemetry combining Chrome Extension (Manifest V3) background service worker with Spring Boot OpenAPI backend.",
+          "programmingLanguage": "Java",
+          "runtimePlatform": "Java 21, Spring Boot 4.0, Chrome MV3",
+          "codeRepository": "https://github.com/mhcybroot/watch-employee",
+          "author": { "@id": "https://github.com/mhcybroot#person" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What technologies does Mahmudul Hasan specialize in?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mahmudul Hasan specializes in Java 21 (Spring Boot 3.4/4.0), Rust 2024 (Axum, Tokio), React 19, Three.js 3D WebGL, IoT protocols (ZKTeco ADMS, RTSP CCTV, Frigate AI), and PostgreSQL with SeaORM."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Mahmudul Hasan's academic background and CGPA?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mahmudul Hasan graduated with Distinction (CGPA: 3.75 / 4.00) in Computer Science & Technology from Dhaka Polytechnic Institute and is pursuing B.Sc. in Engineering equivalence under AMIE (The Institution of Engineers, Bangladesh)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How to contact or hire Mahmudul Hasan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can reach Mahmudul Hasan via email at eng.mahmudulhasan.bd@gmail.com, WhatsApp/Phone at +880 1410-749454, or through his GitHub profile at github.com/mhcybroot."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://github.com/mhcybroot/portfolio-interactive"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Architectural Case Studies",
+              "item": "https://github.com/mhcybroot/portfolio-interactive#case-studies"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Systems Simulator",
+              "item": "https://github.com/mhcybroot/portfolio-interactive#simulator"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Verified Codebases",
+              "item": "https://github.com/mhcybroot/portfolio-interactive#repositories"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Live Deployments",
+              "item": "https://github.com/mhcybroot/portfolio-interactive#deployments"
+            }
+          ]
         }
       ]
     }
