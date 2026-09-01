@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import BentoShowcase from './components/BentoShowcase';
 import CaseStudies from './components/CaseStudies';
 import InteractiveSimulator from './components/InteractiveSimulator';
 import DecisionMatrix from './components/DecisionMatrix';
@@ -71,6 +72,8 @@ export default function App() {
           onOpenTerminal={() => setIsTerminalOpen(true)}
           onOpenResume={() => setIsResumeOpen(true)}
         />
+
+        <BentoShowcase />
 
         <CaseStudies />
 
