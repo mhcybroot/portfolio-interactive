@@ -23,7 +23,21 @@ export default function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [initialSearchQuery, setInitialSearchQuery] = useState('');
 
+  // 1. Detect URL Query Parameters (?q=rust or ?search=adms) on initial load
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q') || params.get('search');
+      if (q) {
+        setInitialSearchQuery(q);
+        setIsPaletteOpen(true);
+      }
+    } catch (e) {}
+  }, []);
+
+  // 2. Global Keyboard Shortcut listener (Ctrl+K / Cmd+K)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -81,9 +95,10 @@ export default function App() {
         <ContactSection />
       </main>
 
-      {/* Global Modals & Command Overlays */}
+      {/* Global Inbound Search Command Palette */}
       <CommandPalette
         isOpen={isPaletteOpen}
+        initialQuery={initialSearchQuery}
         onClose={() => setIsPaletteOpen(false)}
         onOpenTerminal={() => setIsTerminalOpen(true)}
         onOpenResume={() => setIsResumeOpen(true)}
