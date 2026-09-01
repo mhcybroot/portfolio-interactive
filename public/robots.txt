@@ -1,0 +1,6 @@
+# Robots.txt for Mahmudul Hasan Portfolio
+User-agent: *
+Allow: /
+
+# Direct sitemap reference
+Sitemap: https://github.com/mhcybroot/portfolio-interactive/sitemap.xml

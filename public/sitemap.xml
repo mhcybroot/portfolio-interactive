@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Portfolio Page -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Architectural Case Studies -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive#case-studies</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Interactive Systems Simulator -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive#simulator</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Verified Repositories -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive#repositories</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Live Commercial Deployments -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive#deployments</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Master ATS CV (PDF) -->
+  <url>
+    <loc>https://github.com/mhcybroot/portfolio-interactive/documents/MAHMUDUL_HASAN_CV.pdf</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>
