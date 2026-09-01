@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Github, ExternalLink, Code2, Copy, Check, Star, GitFork, Layers, Terminal, Sparkles, X, ChevronRight } from 'lucide-react';
 import { verifiedRepositories } from '../data/repositoriesData';
+import SpotlightCard from './UI/SpotlightCard';
+import MagneticButton from './UI/MagneticButton';
+import { sound } from '../utils/soundManager';
 
 export default function GitHubVisualizer() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -15,6 +18,7 @@ export default function GitHubVisualizer() {
 
   const handleCopyClone = (repo) => {
     navigator.clipboard.writeText(repo.cloneCmd);
+    sound.playClick();
     setCopiedId(repo.id);
     setTimeout(() => setCopiedId(null), 2000);
   };
@@ -42,10 +46,13 @@ export default function GitHubVisualizer() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => {
+                setSelectedCategory(cat);
+                sound.playClick();
+              }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
                 selectedCategory === cat
-                  ? 'bg-[#00f5d4] text-slate-950 font-bold shadow-md shadow-[#00f5d4]/20'
+                  ? 'bg-[#00f5d4] text-slate-950 font-bold shadow-md shadow-[#00f5d4]/20 scale-105'
                   : 'bg-[#0d1527] border border-[#1f2e4d] text-slate-300 hover:text-white hover:border-slate-500'
               }`}
             >
@@ -55,12 +62,13 @@ export default function GitHubVisualizer() {
         </div>
       </div>
 
-      {/* Repositories Grid */}
+      {/* Repositories Grid with Spotlight Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredRepos.map((repo) => (
-          <div
+          <SpotlightCard
             key={repo.id}
-            className="glass-card rounded-2xl p-6 border border-[#1f2e4d] flex flex-col justify-between glass-card-hover group relative overflow-hidden"
+            spotlightColor="rgba(0, 245, 212, 0.1)"
+            className="p-6 flex flex-col justify-between group"
           >
             {/* Top Bar */}
             <div>
@@ -129,7 +137,10 @@ export default function GitHubVisualizer() {
             {/* Bottom Actions */}
             <div className="pt-4 border-t border-[#1f2e4d]/60 flex items-center justify-between gap-2">
               <button
-                onClick={() => setActiveRepo(repo)}
+                onClick={() => {
+                  setActiveRepo(repo);
+                  sound.playClick();
+                }}
                 className="flex items-center gap-1.5 text-xs font-mono text-[#00f5d4] hover:underline"
               >
                 <span>Inspect Architecture</span>
@@ -155,7 +166,7 @@ export default function GitHubVisualizer() {
               </button>
             </div>
 
-          </div>
+          </SpotlightCard>
         ))}
       </div>
 

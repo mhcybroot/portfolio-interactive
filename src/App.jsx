@@ -15,6 +15,7 @@ import ContactSection from './components/ContactSection';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import ResumeModal from './components/ResumeModal';
 import CommandPalette from './components/CommandPalette';
+import ScrollProgressBar from './components/UI/ScrollProgressBar';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -36,6 +37,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#080d1a] text-slate-100 flex flex-col font-sans selection:bg-[#00f5d4] selection:text-black">
       
+      {/* Top Cyber Glowing Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       {/* Navigation Header */}
       <Navbar
         onOpenTerminal={() => setIsTerminalOpen(true)}

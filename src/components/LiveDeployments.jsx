@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, ExternalLink, Github, Sparkles, ShieldCheck, ArrowUpRight } from 'lucide-react';
 import { livePlatforms } from '../data/portfolioData';
+import SpotlightCard from './UI/SpotlightCard';
 
 export default function LiveDeployments() {
   return (
@@ -20,12 +21,13 @@ export default function LiveDeployments() {
         </p>
       </div>
 
-      {/* Browser Mockups Grid */}
+      {/* Browser Mockups Grid with Spotlight Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {livePlatforms.map((platform, idx) => (
-          <div
+          <SpotlightCard
             key={idx}
-            className="glass-card rounded-2xl border border-[#1f2e4d] overflow-hidden glass-card-hover group flex flex-col justify-between"
+            spotlightColor="rgba(59, 130, 246, 0.12)"
+            className="flex flex-col justify-between group"
           >
             {/* Desktop Browser Chrome */}
             <div className="bg-[#0d1527] px-4 py-3 border-b border-[#1f2e4d] flex items-center justify-between">
@@ -98,7 +100,7 @@ export default function LiveDeployments() {
               </a>
             </div>
 
-          </div>
+          </SpotlightCard>
         ))}
       </div>
 

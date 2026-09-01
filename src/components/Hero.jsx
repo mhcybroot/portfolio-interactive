@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Terminal, Download, ArrowRight, ShieldCheck, Sparkles, Code2, Layers, Globe } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import AnimatedCounter from './UI/AnimatedCounter';
+import MagneticButton from './UI/MagneticButton';
+import SpotlightCard from './UI/SpotlightCard';
 
 // Canvas 3D particle constellation background
 function ParticleCanvas() {
@@ -168,42 +171,43 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
           Proven track record with 10 verified production repositories and 4 live commercial deployments.
         </p>
 
-        {/* Action CTAs */}
+        {/* Magnetic Action CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
-          <a
+          <MagneticButton
             href="#repositories"
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-sm transition-all shadow-lg shadow-[#00f5d4]/20 hover:shadow-[#00f5d4]/40 hover:scale-105"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-sm shadow-lg shadow-[#00f5d4]/20 hover:shadow-[#00f5d4]/40"
           >
-            <span>Explore Codebases</span>
+            <span className="mr-2">Explore Codebases</span>
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </MagneticButton>
 
-          <button
+          <MagneticButton
             onClick={onOpenTerminal}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0d1527] border border-[#1f2e4d] text-slate-200 hover:text-[#00f5d4] hover:border-[#00f5d4]/50 font-mono text-sm transition-all shadow-md hover:scale-105"
+            className="px-6 py-3 rounded-xl bg-[#0d1527] border border-[#1f2e4d] text-slate-200 hover:text-[#00f5d4] hover:border-[#00f5d4]/50 font-mono text-sm shadow-md"
           >
-            <Terminal className="w-4 h-4 text-[#00f5d4]" />
+            <Terminal className="w-4 h-4 text-[#00f5d4] mr-2" />
             <span>Launch CLI Terminal</span>
-          </button>
+          </MagneticButton>
 
-          <a
+          <MagneticButton
             href="#deployments"
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0d1527]/80 border border-[#1f2e4d] text-slate-300 hover:text-white font-medium text-sm transition-all hover:scale-105"
+            className="px-6 py-3 rounded-xl bg-[#0d1527]/80 border border-[#1f2e4d] text-slate-300 hover:text-white font-medium text-sm"
           >
-            <Globe className="w-4 h-4 text-purple-400" />
+            <Globe className="w-4 h-4 text-purple-400 mr-2" />
             <span>Live Sites</span>
-          </a>
+          </MagneticButton>
         </div>
 
-        {/* Metric Counter Badges */}
+        {/* Metric Counter Badges with Spotlight & Animated Counters */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {personalInfo.metrics.map((metric, idx) => (
-            <div
+            <SpotlightCard
               key={idx}
-              className="glass-card rounded-2xl p-4 text-center border border-[#1f2e4d]/70 hover:border-[#00f5d4]/40 transition-all group"
+              className="p-4 text-center group"
             >
               <div className="font-mono text-2xl sm:text-3xl font-extrabold text-[#00f5d4] group-hover:scale-110 transition-transform">
-                {metric.value}
+                <AnimatedCounter value={metric.value} />
+                {metric.value.includes('+') && '+'}
               </div>
               <div className="text-xs font-semibold text-slate-200 mt-1">
                 {metric.label}
@@ -211,7 +215,7 @@ export default function Hero({ onOpenTerminal, onOpenResume }) {
               <div className="text-[10px] font-mono text-slate-400 mt-0.5">
                 {metric.unit}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
 
