@@ -16,6 +16,7 @@ import InteractiveTerminal from './components/InteractiveTerminal';
 import ResumeModal from './components/ResumeModal';
 import CommandPalette from './components/CommandPalette';
 import ScrollProgressBar from './components/UI/ScrollProgressBar';
+import AmbientBackground from './components/UI/AmbientBackground';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -35,8 +36,11 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#080d1a] text-slate-100 flex flex-col font-sans selection:bg-[#00f5d4] selection:text-black">
+    <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-[#00f5d4] selection:text-black">
       
+      {/* 2026 Aurora, Cyber Blueprint Grid, & Tactile Grain Background */}
+      <AmbientBackground />
+
       {/* Top Cyber Glowing Scroll Progress Bar */}
       <ScrollProgressBar />
 
@@ -48,7 +52,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main className="flex-1 space-y-4 sm:space-y-8">
+      <main className="flex-1 space-y-4 sm:space-y-8 relative z-10">
         <Hero
           onOpenTerminal={() => setIsTerminalOpen(true)}
           onOpenResume={() => setIsResumeOpen(true)}
