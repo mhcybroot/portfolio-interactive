@@ -51,18 +51,19 @@ Visit `http://localhost:3000` to explore the interactive portfolio.
 
 ---
 
-## 📦 Production Build & Deployment
+## 📦 Production Build & Netlify Deployment
 
-```bash
-# Build optimized production bundle
-npm run build
+### 1-Click Netlify Deploy:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mhcybroot/portfolio-interactive)
 
-# Preview production build locally
-npm run preview
-```
-
-### Instant Deployment:
-- **Vercel / Netlify:** Connect this GitHub repository and deploy with default build settings (`npm run build` with output directory `dist`).
+### Manual Netlify Steps:
+1. Log in to [Netlify](https://app.netlify.com/).
+2. Click **"Add new site"** → **"Import an existing project"**.
+3. Select **GitHub** and choose `mhcybroot/portfolio-interactive`.
+4. Netlify will automatically detect the settings from `netlify.toml`:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+5. Click **"Deploy site"** — your live interactive portfolio will be deployed with global CDN caching, custom SSL, and automatic branch previews!
 
 ---
 
