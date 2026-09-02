@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, RotateCcw, Check, Sparkles, Cpu, Server, Database, Monitor, ShieldCheck, ArrowRight, Video } from 'lucide-react';
+import { Play, RotateCcw, Check, Sparkles, Cpu, Server, Database, Monitor, ShieldCheck, ArrowRight, Video, Fingerprint, Car } from 'lucide-react';
 import { sound } from '../utils/soundManager';
 
 export default function InteractiveSimulator() {
@@ -33,7 +33,7 @@ export default function InteractiveSimulator() {
             setIsRunning(false);
             sound.playChime();
           }
-        }, (idx + 1) * 700);
+        }, (idx + 1) * 650);
       });
     } else {
       const steps = [
@@ -53,7 +53,7 @@ export default function InteractiveSimulator() {
             setIsRunning(false);
             sound.playChime();
           }
-        }, (idx + 1) * 700);
+        }, (idx + 1) * 650);
       });
     }
   };
@@ -88,39 +88,44 @@ export default function InteractiveSimulator() {
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-[#1f2e4d]">
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={() => {
                 setActiveTab('parking');
                 resetSimulation();
               }}
-              className={`px-4 py-2 rounded-xl text-xs font-mono transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono transition-all cursor-pointer ${
                 activeTab === 'parking'
-                  ? 'bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold'
+                  ? 'bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold shadow-lg shadow-[#00f5d4]/20'
                   : 'bg-[#080d1a] border border-[#1f2e4d] text-slate-300 hover:text-white'
               }`}
             >
-              Simulate Smart Parking (Rust/Axum)
+              <Car className="w-3.5 h-3.5" />
+              <span>Simulate Smart Parking (Rust/Axum)</span>
             </button>
 
             <button
+              type="button"
               onClick={() => {
                 setActiveTab('biometric');
                 resetSimulation();
               }}
-              className={`px-4 py-2 rounded-xl text-xs font-mono transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono transition-all cursor-pointer ${
                 activeTab === 'biometric'
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold'
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-lg shadow-purple-500/20'
                   : 'bg-[#080d1a] border border-[#1f2e4d] text-slate-300 hover:text-white'
               }`}
             >
-              Simulate Biometric ADMS (Java/Spring)
+              <Fingerprint className="w-3.5 h-3.5" />
+              <span>Simulate Biometric ADMS (Java/Spring)</span>
             </button>
           </div>
 
           <div className="flex items-center gap-3">
             <button
+              type="button"
               onClick={runSimulation}
               disabled={isRunning}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-lg ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-lg cursor-pointer ${
                 isRunning
                   ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
                   : 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-emerald-400/20 hover:scale-105'
@@ -131,12 +136,41 @@ export default function InteractiveSimulator() {
             </button>
 
             <button
+              type="button"
               onClick={resetSimulation}
-              className="p-2.5 rounded-xl bg-[#080d1a] border border-[#1f2e4d] text-slate-400 hover:text-white transition-colors"
+              className="p-2.5 rounded-xl bg-[#080d1a] border border-[#1f2e4d] text-slate-400 hover:text-white transition-colors cursor-pointer"
               title="Reset Sandbox"
             >
               <RotateCcw className="w-4 h-4" />
             </button>
+          </div>
+        </div>
+
+        {/* Live Visual Sandbox Preview Banner */}
+        <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-8 shadow-xl">
+          <img
+            src={activeTab === 'parking' ? '/images/pms-smart-parking.jpg' : '/images/biometric-scan.jpg'}
+            alt={activeTab === 'parking' ? 'Smart Parking Access Barrier' : 'Biometric Fingerprint ADMS Gateway'}
+            className="w-full h-full object-cover transition-all duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-[#060a14]/40 to-transparent" />
+          
+          <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+              {activeTab === 'parking' ? 'PMS-V2 GATE SIMULATION' : 'ZKTeco ADMS PUSH SIMULATION'}
+            </span>
+            <span className="text-[10px] font-mono text-slate-300 bg-black/60 px-2.5 py-1 rounded border border-[#1f2e4d]">
+              {isRunning ? '● PACKET PROPAGATING...' : currentStep === 5 ? '✔ TRANSACTION COMMITTED' : 'READY TO TRIGGER'}
+            </span>
+          </div>
+
+          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+            <div className="text-xs font-mono font-bold text-white">
+              {activeTab === 'parking' ? 'Target: Commercial Multi-Lane Barrier Gate' : 'Target: Enterprise Cloud HRMS Attendance Core'}
+            </div>
+            <span className="text-[10px] font-mono text-emerald-400">
+              {activeTab === 'parking' ? '< 1.8ms Deterministic' : '< 45ms Real-Time Push'}
+            </span>
           </div>
         </div>
 

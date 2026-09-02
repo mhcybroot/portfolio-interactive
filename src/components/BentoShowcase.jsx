@@ -57,7 +57,7 @@ pub async fn handle_adms_barrier_trigger(
                 <span className="text-xs font-mono text-slate-400">Rust 2024 • Axum • SeaORM</span>
               </div>
 
-              {/* In-Card Overview vs Code Switcher with Guaranteed Clickability */}
+              {/* In-Card Overview vs Code Switcher */}
               <div className="inline-flex items-center p-1 rounded-xl bg-[#060a14] border border-[#1f2e4d] text-xs font-mono relative z-20">
                 <button
                   type="button"
@@ -100,6 +100,24 @@ pub async fn handle_adms_barrier_trigger(
 
             {pmsView === 'overview' ? (
               <div>
+                {/* Visual Image Banner for PMS-V2 */}
+                <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-5 shadow-lg">
+                  <img
+                    src="/images/pms-smart-parking.jpg"
+                    alt="PMS-V2 Smart Parking Access Barrier"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+                      Sub-Millisecond Axum Core
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-300 bg-black/60 px-2 py-0.5 rounded">
+                      ADMS Push Protocol
+                    </span>
+                  </div>
+                </div>
+
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
                   High-concurrency parking architecture built with a zero-GC Rust Axum backend and reactive Flutter BLoC client. Handles multi-terminal cashier concurrency, real-time RTSP camera feeds, and ZKTeco ADMS barrier gate controllers with deterministic sub-millisecond response.
                 </p>
@@ -138,7 +156,6 @@ pub async fn handle_adms_barrier_trigger(
               ))}
             </div>
 
-            {/* Guaranteed Clickable Pill Button for Repository */}
             <a
               href="https://github.com/mhcybroot/PMS-V2"
               target="_blank"
@@ -168,9 +185,19 @@ pub async fn handle_adms_barrier_trigger(
             <div className="font-mono text-3xl font-black text-blue-400 mb-2">
               <AnimatedCounter value="15400" /> <span className="text-sm font-normal text-slate-400">req/s</span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-400 leading-relaxed mb-4">
               Peak Tokio asynchronous socket capacity across distributed cashier gates.
             </p>
+
+            {/* Visual Mini Banner */}
+            <div className="rounded-lg overflow-hidden border border-[#1f2e4d] h-20 w-full relative">
+              <img
+                src="/images/tokio-async-concurrency.jpg"
+                alt="Tokio Asynchronous Concurrency Data Stream"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
+            </div>
           </div>
 
           <div className="pt-4 border-t border-[#1f2e4d] flex items-center justify-between text-[11px] font-mono text-emerald-400">
@@ -218,7 +245,7 @@ pub async fn handle_adms_barrier_trigger(
           </div>
         </TiltCard>
 
-        {/* BENTO TILE 4: Enterprise HRMS & Biometric Ingestion (1x2 / col-span-1 lg:col-span-2) */}
+        {/* BENTO TILE 4: Enterprise HRMS & Server Room (1x2 / col-span-1 lg:col-span-2) */}
         <TiltCard
           maxTilt={5}
           spotlightColor="rgba(245, 158, 11, 0.12)"
@@ -231,6 +258,24 @@ pub async fn handle_adms_barrier_trigger(
                 ENTERPRISE ERP &amp; HRMS
               </span>
               <span className="text-xs font-mono text-slate-400">Java 21 • Spring Boot 3.4</span>
+            </div>
+
+            {/* Server Rack Telemetry Cover */}
+            <div className="relative h-36 sm:h-44 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-5 shadow-lg">
+              <img
+                src="/images/server-rack-telemetry.jpg"
+                alt="Enterprise Server Room Telemetry"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
+              <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-amber-400 border border-amber-500/40">
+                  50+ Daily Active Staff
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 bg-black/60 px-2 py-0.5 rounded">
+                  98.6% Faster Payroll
+                </span>
+              </div>
             </div>
 
             <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">
@@ -249,7 +294,6 @@ pub async fn handle_adms_barrier_trigger(
               ))}
             </div>
 
-            {/* Guaranteed Clickable Pill Button for Backend Repo */}
             <a
               href="https://github.com/mhcybroot/Skylink-custom-backend"
               target="_blank"
@@ -281,14 +325,23 @@ pub async fn handle_adms_barrier_trigger(
               Enterprise technology portal featuring GSAP scroll timelines, Framer Motion, and Tailwind CSS.
             </p>
 
-            <div className="p-3 rounded-lg bg-[#060a14] border border-[#1f2e4d] text-[11px] font-mono text-[#00f5d4] flex items-center gap-2">
+            {/* 3D WebGL Prism Visual Accent */}
+            <div className="rounded-lg overflow-hidden border border-[#1f2e4d] h-20 w-full relative mb-3">
+              <img
+                src="/images/webgl-prism.jpg"
+                alt="3D WebGL Glass Prism Refraction"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] text-[10px] font-mono text-[#00f5d4] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00f5d4] animate-pulse" />
-              <span>HTTPS 200 OK • Live in Production</span>
+              <span>HTTPS 200 OK • Production</span>
             </div>
           </div>
 
           <div className="pt-4 border-t border-[#1f2e4d] flex items-center justify-between relative z-20">
-            {/* Guaranteed Clickable Pill Button for Live Site */}
             <a
               href="https://skylinkltd.ai/"
               target="_blank"

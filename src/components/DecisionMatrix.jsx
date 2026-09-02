@@ -8,6 +8,7 @@ export default function DecisionMatrix() {
     {
       title: "Edge Gate Concurrency: Rust (Axum/Tokio) vs Node.js",
       domain: "IoT & Parking Infrastructure",
+      image: "/images/tokio-async-concurrency.jpg",
       selected: "Rust 2024 (Axum + Tokio)",
       rejected: "Node.js (Express / Fastify)",
       selectedPros: [
@@ -25,6 +26,7 @@ export default function DecisionMatrix() {
     {
       title: "Enterprise ERP Engine: Java 21 Spring Boot vs Express.js",
       domain: "Enterprise HRMS & Payroll",
+      image: "/images/server-rack-telemetry.jpg",
       selected: "Java 21 (Spring Boot 3.4)",
       rejected: "Node.js (Express.js / NestJS)",
       selectedPros: [
@@ -41,6 +43,7 @@ export default function DecisionMatrix() {
     {
       title: "Cashier Desktop UI: Flutter BLoC vs Electron",
       domain: "Multi-Terminal Cashier Software",
+      image: "/images/flutter-mobile-app.jpg",
       selected: "Flutter (BLoC Clean Architecture)",
       rejected: "Electron (Chromium Desktop)",
       selectedPros: [
@@ -57,6 +60,7 @@ export default function DecisionMatrix() {
     {
       title: "Client 3D Showcases: React 19 + Three.js vs 2D DOM",
       domain: "Modern Web Deployments",
+      image: "/images/webgl-prism.jpg",
       selected: "React 19 + Three.js / React Three Fiber",
       rejected: "Traditional 2D DOM Templates",
       selectedPros: [
@@ -93,8 +97,9 @@ export default function DecisionMatrix() {
         {decisions.map((dec, idx) => (
           <button
             key={idx}
+            type="button"
             onClick={() => setActiveTab(idx)}
-            className={`p-3.5 rounded-xl text-left transition-all border ${
+            className={`p-3.5 rounded-xl text-left transition-all border cursor-pointer ${
               activeTab === idx
                 ? 'bg-[#121d36] border-[#00f5d4] shadow-lg shadow-[#00f5d4]/10 scale-[1.02]'
                 : 'bg-[#0d1527]/70 border-[#1f2e4d] hover:border-slate-500 text-slate-400'
@@ -112,6 +117,25 @@ export default function DecisionMatrix() {
 
       {/* Active Comparison Matrix */}
       <div className="glass-card rounded-2xl p-6 sm:p-8 border border-[#1f2e4d]">
+        
+        {/* Visual Header Banner for Active Decision */}
+        <div className="relative h-36 sm:h-44 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-6 shadow-lg">
+          <img
+            src={decisions[activeTab].image}
+            alt={decisions[activeTab].title}
+            className="w-full h-full object-cover transition-all duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
+          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+            <span className="text-xs font-mono font-bold text-white">
+              {decisions[activeTab].selected}
+            </span>
+            <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+              {decisions[activeTab].domain}
+            </span>
+          </div>
+        </div>
+
         <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
           {decisions[activeTab].title}
         </h3>

@@ -11,6 +11,7 @@ export default function ArchitectureFlow() {
       icon: Cpu,
       badge: "Physical Edge",
       color: "from-amber-500 to-orange-500",
+      image: "/images/biometric-scan.jpg",
       description: "On-premise biometric controllers, video feeds, and barcode terminals capturing live transactions.",
       technologies: ["ZKTeco Biometric Devices", "IP CCTV Cameras (RTSP/HTTP)", "Barcode Scanners", "PoE Network Infrastructure"],
       codeSnippet: `// Edge Protocol Capture
@@ -24,6 +25,7 @@ Content-Type: text/plain
       icon: Radio,
       badge: "Protocol Handler",
       color: "from-purple-500 to-indigo-500",
+      image: "/images/network-routing-gateway.jpg",
       description: "High-throughput listeners decoding ADMS HTTP push streams, RTSP video proxies, and REST webhooks.",
       technologies: ["AdmsService.java (Spring Boot)", "zk_adms_service.rs (Rust)", "cctv_service.rs (RTSP Video)", "Frigate AI Webhooks"],
       codeSnippet: `// Rust Axum ADMS Ingestion Handler
@@ -41,6 +43,7 @@ pub async fn handle_adms_push(
       icon: Server,
       badge: "Async Core",
       color: "from-[#00f5d4] to-blue-500",
+      image: "/images/tokio-async-concurrency.jpg",
       description: "Concurrent async business logic engines for tariff calculations, payroll rules, RBAC, and WebSocket event broadcasts.",
       technologies: ["Rust 2024 (Axum 0.8 + Tokio)", "Java 21 (Spring Boot 3.4)", "Spring Security 6 (JWT + Argon2)", "WebSockets / Web Push"],
       codeSnippet: `// Concurrency & Tariff Calculator (SeaORM)
@@ -54,6 +57,7 @@ let total_fee = calculate_dynamic_fare(duration, rate);`
       icon: Database,
       badge: "ACID Storage",
       color: "from-emerald-400 to-teal-500",
+      image: "/images/database-cluster.jpg",
       description: "Optimized relational database storage, dynamic JPA Criteria Specifications, and async connection pooling.",
       technologies: ["PostgreSQL", "SeaORM (sqlx-postgres)", "Spring Data JPA / Hibernate", "H2 Embedded Test DB"],
       codeSnippet: `// JPA Specification Dynamic Filter
@@ -67,6 +71,7 @@ public static Specification<PaymentRequest> filterByDept(String dept) {
       icon: Monitor,
       badge: "Reactive UI",
       color: "from-pink-500 to-rose-500",
+      image: "/images/flutter-mobile-app.jpg",
       description: "Interactive single-page applications and desktop cashiers receiving real-time state updates.",
       technologies: ["React 19 & TypeScript", "Flutter (BLoC Clean Architecture)", "Three.js 3D Viewports", "Tailwind CSS v4"],
       codeSnippet: `// Flutter BLoC Real-Time Occupancy State
@@ -150,10 +155,10 @@ on<UpdateOccupancyEvent>((event, emit) {
 
       {/* Active Stage Deep-Dive Card */}
       <div className="glass-card rounded-2xl p-6 sm:p-8 border border-[#1f2e4d]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Column: Details & Tech Stack */}
-          <div>
+          {/* Left Column: Details & Tech Stack (6 Cols) */}
+          <div className="lg:col-span-6">
             <div className="inline-block px-3 py-1 rounded-md bg-[#080d1a] border border-[#1f2e4d] text-xs font-mono text-[#00f5d4] mb-3">
               Active Pipeline Stage {activeStep + 1} of 5
             </div>
@@ -181,15 +186,38 @@ on<UpdateOccupancyEvent>((event, emit) {
             </div>
           </div>
 
-          {/* Right Column: Verified Code Snippet */}
-          <div className="bg-[#080d1a] rounded-xl border border-[#1f2e4d] overflow-hidden shadow-xl">
-            <div className="bg-[#0d1527] px-4 py-2 border-b border-[#1f2e4d] flex items-center justify-between text-xs font-mono text-slate-400">
-              <span className="text-[#00f5d4]">implementation_snapshot</span>
-              <span>Verified Module</span>
+          {/* Right Column: Stage Image & Code Snippet (6 Cols) */}
+          <div className="lg:col-span-6 space-y-4">
+            
+            {/* Stage Visual Image Preview */}
+            <div className="rounded-xl overflow-hidden border border-[#1f2e4d] relative h-40 w-full shadow-lg">
+              <img
+                src={stages[activeStep].image}
+                alt={stages[activeStep].title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080d1a] via-transparent to-transparent" />
+              <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+                  {stages[activeStep].badge}
+                </span>
+                <span className="text-[10px] font-mono text-slate-400 bg-black/60 px-2 py-0.5 rounded">
+                  Live Architectural Node
+                </span>
+              </div>
             </div>
-            <pre className="p-4 font-mono text-xs sm:text-sm text-emerald-400 overflow-x-auto leading-relaxed">
-              <code>{stages[activeStep].codeSnippet}</code>
-            </pre>
+
+            {/* Code Snippet Box */}
+            <div className="bg-[#080d1a] rounded-xl border border-[#1f2e4d] overflow-hidden shadow-xl">
+              <div className="bg-[#0d1527] px-4 py-2 border-b border-[#1f2e4d] flex items-center justify-between text-xs font-mono text-slate-400">
+                <span className="text-[#00f5d4]">implementation_snapshot</span>
+                <span>Verified Module</span>
+              </div>
+              <pre className="p-4 font-mono text-xs text-emerald-400 overflow-x-auto leading-relaxed">
+                <code>{stages[activeStep].codeSnippet}</code>
+              </pre>
+            </div>
+
           </div>
 
         </div>
