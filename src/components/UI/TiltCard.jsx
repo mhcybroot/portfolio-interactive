@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { sound } from '../../utils/soundManager';
 
 export default function TiltCard({
   children,
   className = '',
+  innerClassName = 'p-6 sm:p-7 flex flex-col justify-between h-full',
   maxTilt = 8,
   perspective = 1000,
   spotlightColor = 'rgba(0, 245, 212, 0.12)',
@@ -57,17 +57,21 @@ export default function TiltCard({
           transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
           transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
         }}
-        className="w-full h-full rounded-2xl overflow-hidden glass-card border border-[#1f2e4d] relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-[#00f5d4]/10 hover:border-[#00f5d4]/40"
+        className="w-full h-full rounded-2xl overflow-hidden glass-card border border-[#1f2e4d] relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-[#00f5d4]/10 hover:border-[#00f5d4]/40 flex flex-col"
       >
         {/* Dynamic Cursor Spotlight Radial Glow */}
         <div
-          className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+          className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-0"
           style={{
             opacity: isHovered ? 1 : 0,
             background: `radial-gradient(450px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightColor}, transparent 70%)`,
           }}
         />
-        {children}
+        
+        {/* Inner Card Content with Proper Padding & Z-Index */}
+        <div className={`relative z-10 w-full ${innerClassName}`}>
+          {children}
+        </div>
       </div>
     </div>
   );
