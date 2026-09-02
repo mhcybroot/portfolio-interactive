@@ -57,29 +57,35 @@ pub async fn handle_adms_barrier_trigger(
                 <span className="text-xs font-mono text-slate-400">Rust 2024 • Axum • SeaORM</span>
               </div>
 
-              {/* In-Card Overview vs Code Switcher */}
-              <div className="flex items-center p-1 rounded-lg bg-[#060a14] border border-[#1f2e4d] text-xs font-mono">
+              {/* In-Card Overview vs Code Switcher with Clean Icons */}
+              <div className="inline-flex items-center p-1 rounded-xl bg-[#060a14] border border-[#1f2e4d] text-xs font-mono">
                 <button
                   onClick={() => {
                     setPmsView('overview');
                     sound.playClick();
                   }}
-                  className={`px-3 py-1 rounded-md transition-colors ${
-                    pmsView === 'overview' ? 'bg-[#101a30] text-[#00f5d4] font-bold shadow-sm' : 'text-slate-400 hover:text-white'
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                    pmsView === 'overview'
+                      ? 'bg-[#101a30] text-[#00f5d4] font-bold border border-[#1f2e4d] shadow-sm'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  Overview
+                  <Layers className="w-3 h-3" />
+                  <span>Overview</span>
                 </button>
                 <button
                   onClick={() => {
                     setPmsView('code');
                     sound.playClick();
                   }}
-                  className={`px-3 py-1 rounded-md transition-colors ${
-                    pmsView === 'code' ? 'bg-[#101a30] text-[#00f5d4] font-bold shadow-sm' : 'text-slate-400 hover:text-white'
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                    pmsView === 'code'
+                      ? 'bg-[#101a30] text-[#00f5d4] font-bold border border-[#1f2e4d] shadow-sm'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  &lt;Source Code&gt;
+                  <Code className="w-3 h-3" />
+                  <span>Source Code</span>
                 </button>
               </div>
             </div>
@@ -128,11 +134,12 @@ pub async fn handle_adms_barrier_trigger(
               ))}
             </div>
 
+            {/* Sleek Pill Button for Repository */}
             <a
               href="https://github.com/mhcybroot/PMS-V2"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-bold text-[#00f5d4] hover:underline"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-[#00f5d4]/60 text-xs font-mono font-semibold text-[#00f5d4] hover:shadow-md hover:shadow-[#00f5d4]/15 transition-all"
             >
               <span>Repository</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -237,11 +244,12 @@ pub async fn handle_adms_barrier_trigger(
               ))}
             </div>
 
+            {/* Sleek Pill Button for Backend Repo */}
             <a
               href="https://github.com/mhcybroot/Skylink-custom-backend"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:underline"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-amber-400/60 text-xs font-mono font-semibold text-amber-400 hover:shadow-md hover:shadow-amber-400/15 transition-all"
             >
               <span>View Backend Repo</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -274,11 +282,12 @@ pub async fn handle_adms_barrier_trigger(
           </div>
 
           <div className="pt-4 border-t border-[#1f2e4d] flex items-center justify-between">
+            {/* Sleek Pill Button for Live Site */}
             <a
               href="https://skylinkltd.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-purple-400/60 text-xs font-mono font-semibold text-purple-400 hover:shadow-md hover:shadow-purple-400/15 transition-all"
             >
               <span>Visit Website</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
