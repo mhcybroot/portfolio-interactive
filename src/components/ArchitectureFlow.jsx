@@ -98,24 +98,35 @@ on<UpdateOccupancyEvent>((event, emit) {
         </p>
       </div>
 
-      {/* Visual Distributed Microservices Topology Banner */}
-      <div className="glass-card rounded-2xl overflow-hidden border border-[#1f2e4d] mb-10 relative">
-        <div className="relative h-48 sm:h-64 w-full overflow-hidden">
+      {/* Visual Distributed Microservices Topology Master Banner */}
+      <div className="glass-card rounded-2xl overflow-hidden border border-[#1f2e4d] mb-10 relative shadow-2xl group">
+        <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden">
           <img
             src="/images/microservices-topology.jpg"
             alt="Distributed Microservices Mesh & Interconnected Cloud Nodes"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/50 to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Network className="w-4 h-4 text-[#00f5d4]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-[#060a14]/30 to-transparent" />
+          
+          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-lg flex items-center gap-1.5">
+              <Network className="w-3.5 h-3.5 text-[#00f5d4]" />
+              <span>GLOBAL DISTRIBUTED TOPOLOGY</span>
+            </span>
+            <span className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-[#080d1a]/80 backdrop-blur-md text-emerald-400 border border-emerald-500/30">
+              ● Multi-Tier Edge to Cloud
+            </span>
+          </div>
+
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#1f2e4d]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Mesh Architecture</span>
               <span className="text-xs sm:text-sm font-bold text-white font-mono">
-                Distributed Microservices Mesh Topology
+                Interconnected Asynchronous Edge Nodes &amp; PostgreSQL Shards
               </span>
             </div>
-            <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#080d1a]/90 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
-              ● Multi-Tier Edge to Cloud
+            <span className="text-xs font-mono text-cyan-300 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-cyan-500/30">
+              Sub-1.8ms Ingestion Latency
             </span>
           </div>
         </div>
@@ -189,19 +200,19 @@ on<UpdateOccupancyEvent>((event, emit) {
           {/* Right Column: Stage Image & Code Snippet (6 Cols) */}
           <div className="lg:col-span-6 space-y-4">
             
-            {/* Stage Visual Image Preview */}
-            <div className="rounded-xl overflow-hidden border border-[#1f2e4d] relative h-40 w-full shadow-lg">
+            {/* Stage Visual Image Preview with Generous Height */}
+            <div className="rounded-xl overflow-hidden border border-[#1f2e4d] relative h-48 sm:h-56 w-full shadow-lg group">
               <img
                 src={stages[activeStep].image}
                 alt={stages[activeStep].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080d1a] via-transparent to-transparent" />
-              <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080d1a] via-[#080d1a]/30 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
                   {stages[activeStep].badge}
                 </span>
-                <span className="text-[10px] font-mono text-slate-400 bg-black/60 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-slate-300 bg-black/70 px-2.5 py-1 rounded border border-[#1f2e4d]">
                   Live Architectural Node
                 </span>
               </div>

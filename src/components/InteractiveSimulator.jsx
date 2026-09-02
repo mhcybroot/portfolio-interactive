@@ -146,29 +146,32 @@ export default function InteractiveSimulator() {
           </div>
         </div>
 
-        {/* Live Visual Sandbox Preview Banner */}
-        <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-8 shadow-xl">
+        {/* Live Visual Sandbox Preview Banner with Generous Height */}
+        <div className="relative h-60 sm:h-72 md:h-80 w-full rounded-2xl overflow-hidden border border-[#1f2e4d] mb-8 shadow-2xl group">
           <img
             src={activeTab === 'parking' ? '/images/pms-smart-parking.jpg' : '/images/biometric-scan.jpg'}
             alt={activeTab === 'parking' ? 'Smart Parking Access Barrier' : 'Biometric Fingerprint ADMS Gateway'}
-            className="w-full h-full object-cover transition-all duration-700"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-700 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-[#060a14]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-[#060a14]/30 to-transparent" />
           
-          <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-            <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+            <span className="text-[11px] font-mono px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-lg">
               {activeTab === 'parking' ? 'PMS-V2 GATE SIMULATION' : 'ZKTeco ADMS PUSH SIMULATION'}
             </span>
-            <span className="text-[10px] font-mono text-slate-300 bg-black/60 px-2.5 py-1 rounded border border-[#1f2e4d]">
+            <span className="text-[10px] font-mono text-slate-200 bg-black/70 backdrop-blur-md px-3 py-1 rounded-md border border-[#1f2e4d]">
               {isRunning ? '● PACKET PROPAGATING...' : currentStep === 5 ? '✔ TRANSACTION COMMITTED' : 'READY TO TRIGGER'}
             </span>
           </div>
 
-          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-            <div className="text-xs font-mono font-bold text-white">
-              {activeTab === 'parking' ? 'Target: Commercial Multi-Lane Barrier Gate' : 'Target: Enterprise Cloud HRMS Attendance Core'}
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#1f2e4d]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Simulation Target</span>
+              <span className="text-xs sm:text-sm font-mono font-bold text-white">
+                {activeTab === 'parking' ? 'Target: Commercial Multi-Lane Barrier Gate' : 'Target: Enterprise Cloud HRMS Attendance Core'}
+              </span>
             </div>
-            <span className="text-[10px] font-mono text-emerald-400">
+            <span className="text-xs font-mono text-emerald-400 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-emerald-500/30">
               {activeTab === 'parking' ? '< 1.8ms Deterministic' : '< 45ms Real-Time Push'}
             </span>
           </div>

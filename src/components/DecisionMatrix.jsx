@@ -118,20 +118,31 @@ export default function DecisionMatrix() {
       {/* Active Comparison Matrix */}
       <div className="glass-card rounded-2xl p-6 sm:p-8 border border-[#1f2e4d]">
         
-        {/* Visual Header Banner for Active Decision */}
-        <div className="relative h-36 sm:h-44 w-full rounded-xl overflow-hidden border border-[#1f2e4d] mb-6 shadow-lg">
+        {/* Visual Header Banner with Optimal Aspect Ratio & Headroom */}
+        <div className="relative h-56 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden border border-[#1f2e4d] mb-8 shadow-2xl group">
           <img
             src={decisions[activeTab].image}
             alt={decisions[activeTab].title}
-            className="w-full h-full object-cover transition-all duration-700"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent" />
-          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-            <span className="text-xs font-mono font-bold text-white">
-              {decisions[activeTab].selected}
-            </span>
-            <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-[#060a14]/30 to-transparent" />
+          
+          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-lg">
               {decisions[activeTab].domain}
+            </span>
+            <span className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-[#080d1a]/80 backdrop-blur-md text-slate-300 border border-[#1f2e4d]">
+              Case 0{activeTab + 1} Architecture
+            </span>
+          </div>
+
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#1f2e4d]">
+              <span className="text-[10px] font-mono uppercase text-slate-400 block">Selected Technology Stack</span>
+              <span className="text-sm font-bold text-white font-mono">{decisions[activeTab].selected}</span>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-emerald-500/30">
+              ● Production Verified
             </span>
           </div>
         </div>
