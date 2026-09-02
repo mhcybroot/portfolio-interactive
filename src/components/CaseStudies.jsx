@@ -11,6 +11,7 @@ export default function CaseStudies() {
       subtitle: "Eliminating vehicle gate latency and race conditions across multi-terminal parking facilities.",
       category: "Systems & IoT Architecture",
       image: "/images/pms-smart-parking.jpg",
+      badgeText: "Live Edge Hardware",
       metrics: [
         { label: "Gate Response Latency", value: "< 1.8 ms", desc: "Zero GC pauses" },
         { label: "Duplicate Scans", value: "0%", desc: "Hardware debounce" },
@@ -46,6 +47,8 @@ export default function CaseStudies() {
       title: "Enterprise ERP & Biometric Stream Ingestion Engine",
       subtitle: "Automating attendance and multi-tier payroll calculations for 50+ enterprise staff.",
       category: "Enterprise Full-Stack Architecture",
+      image: "/images/database-cluster.jpg",
+      badgeText: "High-Throughput ACID Core",
       metrics: [
         { label: "Payroll Processing Time", value: "98.6% ↓", desc: "3 days → 5 minutes" },
         { label: "Manual Calculation Errors", value: "0", desc: "Automated JPA engine" },
@@ -102,36 +105,26 @@ export default function CaseStudies() {
             key={study.id}
             className="glass-card rounded-2xl overflow-hidden border border-[#1f2e4d] flex flex-col justify-between glass-card-hover group"
           >
-            {/* Visual Header Banner if Image Exists */}
-            {study.image && (
-              <div className="relative h-48 sm:h-56 w-full overflow-hidden border-b border-[#1f2e4d]">
-                <img
-                  src={study.image}
-                  alt={study.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/40 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a]/90 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-md">
-                    {study.category}
-                  </span>
-                  <span className="text-[10px] font-mono text-slate-300 bg-[#060a14]/80 px-2.5 py-1 rounded-md border border-[#1f2e4d]">
-                    Live Edge Hardware
-                  </span>
-                </div>
+            {/* Visual Header Banner */}
+            <div className="relative h-48 sm:h-56 w-full overflow-hidden border-b border-[#1f2e4d]">
+              <img
+                src={study.image}
+                alt={study.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/40 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a]/90 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-md">
+                  {study.category}
+                </span>
+                <span className="text-[10px] font-mono text-slate-300 bg-[#060a14]/85 px-2.5 py-1 rounded-md border border-[#1f2e4d]">
+                  {study.badgeText}
+                </span>
               </div>
-            )}
+            </div>
 
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
               <div>
-                {!study.image && (
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a] text-[#00f5d4] border border-[#00f5d4]/30">
-                      {study.category}
-                    </span>
-                  </div>
-                )}
-
                 <h3 className="text-xl font-bold text-white group-hover:text-[#00f5d4] transition-colors mb-2 leading-snug">
                   {study.title}
                 </h3>
@@ -167,6 +160,7 @@ export default function CaseStudies() {
               {/* Read Full Case Study Button */}
               <div className="pt-6 mt-6 border-t border-[#1f2e4d]/60">
                 <button
+                  type="button"
                   onClick={() => setSelectedCase(study)}
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#121d36] hover:bg-[#1f2e4d] border border-[#1f2e4d] hover:border-[#00f5d4]/40 text-xs font-bold text-white transition-all group-hover:text-[#00f5d4] cursor-pointer"
                 >
@@ -197,6 +191,7 @@ export default function CaseStudies() {
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setSelectedCase(null)}
                 className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#080d1a] transition-colors cursor-pointer"
               >
@@ -207,16 +202,14 @@ export default function CaseStudies() {
             {/* Modal Body */}
             <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-300 text-xs sm:text-sm leading-relaxed">
               
-              {/* Optional Case Image in Modal */}
-              {selectedCase.image && (
-                <div className="rounded-xl overflow-hidden border border-[#1f2e4d] max-h-64">
-                  <img
-                    src={selectedCase.image}
-                    alt={selectedCase.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+              {/* Visual Cover in Modal */}
+              <div className="rounded-xl overflow-hidden border border-[#1f2e4d] max-h-64">
+                <img
+                  src={selectedCase.image}
+                  alt={selectedCase.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               {/* Metrics Showcase */}
               <div className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-[#080d1a] border border-[#1f2e4d]">
@@ -300,6 +293,7 @@ export default function CaseStudies() {
             {/* Modal Footer */}
             <div className="bg-[#121d36] px-6 py-3.5 border-t border-[#1f2e4d] flex justify-end">
               <button
+                type="button"
                 onClick={() => setSelectedCase(null)}
                 className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs cursor-pointer"
               >

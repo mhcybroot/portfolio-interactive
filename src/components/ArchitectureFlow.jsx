@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Server, Database, Monitor, ShieldCheck, ArrowRight, Activity, Radio, Video, Zap } from 'lucide-react';
+import { Cpu, Server, Database, Monitor, ShieldCheck, ArrowRight, Activity, Radio, Video, Zap, Network, ExternalLink } from 'lucide-react';
 
 export default function ArchitectureFlow() {
   const [activeStep, setActiveStep] = useState(2); // Default to Core Backend
@@ -83,7 +83,7 @@ on<UpdateOccupancyEvent>((event, emit) {
       <div className="text-center mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0d1527] border border-[#1f2e4d] text-xs font-mono text-[#00f5d4] mb-3">
           <Zap className="w-3.5 h-3.5" />
-          <span>System Design & Flow</span>
+          <span>System Design &amp; Flow</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
           Edge-to-Cloud <span className="cyber-gradient-text">Architecture Pipeline</span>
@@ -91,6 +91,29 @@ on<UpdateOccupancyEvent>((event, emit) {
         <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-2">
           How real edge IoT hardware, high-concurrency Rust/Java backends, and reactive clients connect end-to-end.
         </p>
+      </div>
+
+      {/* Visual Distributed Microservices Topology Banner */}
+      <div className="glass-card rounded-2xl overflow-hidden border border-[#1f2e4d] mb-10 relative">
+        <div className="relative h-48 sm:h-64 w-full overflow-hidden">
+          <img
+            src="/images/microservices-topology.jpg"
+            alt="Distributed Microservices Mesh & Interconnected Cloud Nodes"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/50 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Network className="w-4 h-4 text-[#00f5d4]" />
+              <span className="text-xs sm:text-sm font-bold text-white font-mono">
+                Distributed Microservices Mesh Topology
+              </span>
+            </div>
+            <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#080d1a]/90 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40">
+              ● Multi-Tier Edge to Cloud
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Interactive Step Navigator */}
@@ -101,8 +124,9 @@ on<UpdateOccupancyEvent>((event, emit) {
           return (
             <button
               key={stage.id}
+              type="button"
               onClick={() => setActiveStep(stage.id)}
-              className={`p-3.5 rounded-xl text-left transition-all border ${
+              className={`p-3.5 rounded-xl text-left transition-all border cursor-pointer ${
                 isActive
                   ? 'bg-[#121d36] border-[#00f5d4] shadow-lg shadow-[#00f5d4]/10 scale-[1.02]'
                   : 'bg-[#0d1527]/70 border-[#1f2e4d] hover:border-slate-500 text-slate-400'
@@ -142,7 +166,7 @@ on<UpdateOccupancyEvent>((event, emit) {
 
             <div className="space-y-3">
               <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                Integrated Technologies & Protocols:
+                Integrated Technologies &amp; Protocols:
               </div>
               <div className="flex flex-wrap gap-2">
                 {stages[activeStep].technologies.map((tech, idx) => (

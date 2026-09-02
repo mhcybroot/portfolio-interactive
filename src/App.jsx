@@ -18,7 +18,6 @@ import ResumeModal from './components/ResumeModal';
 import CommandPalette from './components/CommandPalette';
 import ScrollProgressBar from './components/UI/ScrollProgressBar';
 import AmbientBackground from './components/UI/AmbientBackground';
-import AtmosphereSwitcher from './components/UI/AtmosphereSwitcher';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -26,20 +25,6 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [initialSearchQuery, setInitialSearchQuery] = useState('');
-  const [currentAtmosphere, setCurrentAtmosphere] = useState(() => {
-    try {
-      return localStorage.getItem('portfolio_atmosphere') || 'cyber-aurora';
-    } catch (e) {
-      return 'cyber-aurora';
-    }
-  });
-
-  const handleSelectAtmosphere = (themeId) => {
-    setCurrentAtmosphere(themeId);
-    try {
-      localStorage.setItem('portfolio_atmosphere', themeId);
-    } catch (e) {}
-  };
 
   // 1. Detect URL Query Parameters (?q=rust or ?search=adms) on initial load
   useEffect(() => {
@@ -68,8 +53,8 @@ export default function App() {
   return (
     <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-[#00f5d4] selection:text-black">
       
-      {/* Dynamic 10-Atmosphere & Cyber Mesh Background */}
-      <AmbientBackground currentAtmosphere={currentAtmosphere} />
+      {/* 2026 Aurora, Cyber Blueprint Grid, & Tactile Grain Background */}
+      <AmbientBackground />
 
       {/* Top Cyber Glowing Scroll Progress Bar */}
       <ScrollProgressBar />
@@ -112,12 +97,6 @@ export default function App() {
 
         <ContactSection />
       </main>
-
-      {/* Floating Atmosphere & Theme Switcher */}
-      <AtmosphereSwitcher
-        currentAtmosphere={currentAtmosphere}
-        onSelectAtmosphere={handleSelectAtmosphere}
-      />
 
       {/* Global Inbound Search Command Palette */}
       <CommandPalette
