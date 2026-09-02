@@ -28,10 +28,9 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
 
   const navLinks = [
     { name: "Overview", href: "#hero" },
-    { name: "Bento Hub", href: "#bento" },
+    { name: "Bento", href: "#bento" },
     { name: "Case Studies", href: "#case-studies" },
     { name: "Simulator", href: "#simulator" },
-    { name: "Trade-offs", href: "#decision-matrix" },
     { name: "Repositories", href: "#repositories" },
     { name: "Deployments", href: "#deployments" },
     { name: "Endorsements", href: "#endorsements" },
@@ -41,35 +40,35 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-[#060a14]/85 backdrop-blur-md border-b border-[#1f2e4d]/80 py-2.5 shadow-lg shadow-black/20' 
-        : 'bg-transparent py-4'
+        ? 'bg-[#060a14]/90 backdrop-blur-md border-b border-[#1f2e4d]/80 py-2.5 shadow-lg shadow-black/30' 
+        : 'bg-transparent py-3.5'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         
         {/* Brand Logo */}
-        <a href="#hero" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#00f5d4] to-[#3b82f6] p-[1.5px] shadow-lg shadow-[#00f5d4]/20 group-hover:shadow-[#00f5d4]/40 transition-all">
-            <div className="w-full h-full bg-[#060a14] rounded-[10px] flex items-center justify-center">
-              <span className="font-mono font-bold text-base text-[#00f5d4]">MH</span>
+        <a href="#hero" className="flex items-center gap-2.5 group shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#00f5d4] to-[#3b82f6] p-[1.5px] shadow-md shadow-[#00f5d4]/20 group-hover:shadow-[#00f5d4]/40 transition-all">
+            <div className="w-full h-full bg-[#060a14] rounded-[7px] flex items-center justify-center">
+              <span className="font-mono font-bold text-sm text-[#00f5d4]">MH</span>
             </div>
           </div>
           <div>
-            <div className="font-bold text-sm sm:text-base text-slate-100 group-hover:text-[#00f5d4] transition-colors leading-tight">
+            <div className="font-bold text-xs sm:text-sm text-slate-100 group-hover:text-[#00f5d4] transition-colors leading-tight whitespace-nowrap">
               Mahmudul Hasan
             </div>
-            <div className="text-[10px] font-mono text-slate-400">
+            <div className="text-[9px] font-mono text-slate-400 whitespace-nowrap">
               Full-Stack & Systems
             </div>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-4">
+        <nav className="hidden xl:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-xs font-medium text-slate-300 hover:text-[#00f5d4] transition-colors hover:scale-105"
+              className="text-xs font-medium text-slate-300 hover:text-[#00f5d4] transition-colors whitespace-nowrap"
             >
               {link.name}
             </a>
@@ -77,16 +76,16 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
         </nav>
 
         {/* Action Center */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-2 shrink-0">
           
           {/* Quick Search / Cmd+K Button */}
           <button
             onClick={onOpenPalette}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] hover:border-[#00f5d4]/40 text-xs font-mono transition-all"
+            className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] hover:border-[#00f5d4]/40 text-xs font-mono transition-all shrink-0"
             title="Search (Ctrl + K)"
           >
             <Search className="w-3.5 h-3.5 text-[#00f5d4]" />
-            <span className="hidden md:inline text-[11px] text-slate-400">Search...</span>
+            <span className="hidden 2xl:inline text-[11px] text-slate-400">Search</span>
             <kbd className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-[#060a14] border border-[#1f2e4d] text-[9px] text-slate-400">
               Ctrl+K
             </kbd>
@@ -95,7 +94,7 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
-            className="p-2 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-400 hover:text-white transition-colors shrink-0"
             title={isMuted ? "Enable Sound Effects" : "Mute Sound Effects"}
           >
             {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-[#00f5d4]" />}
@@ -104,21 +103,21 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
           {/* Quick Terminal Trigger */}
           <button
             onClick={onOpenTerminal}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] text-xs font-mono transition-all"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-[#00f5d4] text-xs font-mono transition-all shrink-0"
             title="Open Interactive Terminal"
           >
             <Terminal className="w-3.5 h-3.5 text-[#00f5d4]" />
-            <span className="hidden lg:inline">CLI</span>
+            <span>CLI</span>
           </button>
 
           {/* CV Download Dropdown */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               onClick={() => setCvDropdownOpen(!cvDropdownOpen)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-semibold text-xs transition-all shadow-md shadow-[#00f5d4]/20 hover:opacity-95"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs transition-all shadow-md shadow-[#00f5d4]/20 hover:opacity-95"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">CV</span>
+              <span>CV</span>
               <ChevronDown className={`w-3 h-3 transition-transform ${cvDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
@@ -160,10 +159,10 @@ export default function Navbar({ onOpenResume, onOpenTerminal, onOpenPalette }) 
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center xl:hidden">
+          <div className="flex items-center xl:hidden shrink-0">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-white"
+              className="p-1.5 sm:p-2 rounded-lg bg-[#0b1222] border border-[#1f2e4d] text-slate-300 hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
