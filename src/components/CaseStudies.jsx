@@ -10,6 +10,7 @@ export default function CaseStudies() {
       title: "Smart Parking Infrastructure: High-Concurrency Rust & Edge IoT Architecture",
       subtitle: "Eliminating vehicle gate latency and race conditions across multi-terminal parking facilities.",
       category: "Systems & IoT Architecture",
+      image: "/images/pms-smart-parking.jpg",
       metrics: [
         { label: "Gate Response Latency", value: "< 1.8 ms", desc: "Zero GC pauses" },
         { label: "Duplicate Scans", value: "0%", desc: "Hardware debounce" },
@@ -99,56 +100,81 @@ export default function CaseStudies() {
         {caseStudies.map((study) => (
           <div
             key={study.id}
-            className="glass-card rounded-2xl p-6 sm:p-8 border border-[#1f2e4d] flex flex-col justify-between glass-card-hover group"
+            className="glass-card rounded-2xl overflow-hidden border border-[#1f2e4d] flex flex-col justify-between glass-card-hover group"
           >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a] text-[#00f5d4] border border-[#00f5d4]/30">
-                  {study.category}
-                </span>
+            {/* Visual Header Banner if Image Exists */}
+            {study.image && (
+              <div className="relative h-48 sm:h-56 w-full overflow-hidden border-b border-[#1f2e4d]">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/40 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a]/90 backdrop-blur-md text-[#00f5d4] border border-[#00f5d4]/40 shadow-md">
+                    {study.category}
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-300 bg-[#060a14]/80 px-2.5 py-1 rounded-md border border-[#1f2e4d]">
+                    Live Edge Hardware
+                  </span>
+                </div>
               </div>
+            )}
 
-              <h3 className="text-xl font-bold text-white group-hover:text-[#00f5d4] transition-colors mb-2 leading-snug">
-                {study.title}
-              </h3>
-
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-                {study.subtitle}
-              </p>
-
-              {/* Key Metrics Grid */}
-              <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-xl bg-[#080d1a] border border-[#1f2e4d] mb-6">
-                {study.metrics.map((m, mIdx) => (
-                  <div key={mIdx} className="text-center">
-                    <div className="font-mono text-base sm:text-lg font-extrabold text-[#00f5d4]">
-                      {m.value}
-                    </div>
-                    <div className="text-[10px] font-semibold text-slate-200 mt-0.5">{m.label}</div>
-                    <div className="text-[9px] font-mono text-slate-400">{m.desc}</div>
+            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+              <div>
+                {!study.image && (
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#080d1a] text-[#00f5d4] border border-[#00f5d4]/30">
+                      {study.category}
+                    </span>
                   </div>
-                ))}
+                )}
+
+                <h3 className="text-xl font-bold text-white group-hover:text-[#00f5d4] transition-colors mb-2 leading-snug">
+                  {study.title}
+                </h3>
+
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                  {study.subtitle}
+                </p>
+
+                {/* Key Metrics Grid */}
+                <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-xl bg-[#080d1a] border border-[#1f2e4d] mb-6">
+                  {study.metrics.map((m, mIdx) => (
+                    <div key={mIdx} className="text-center">
+                      <div className="font-mono text-base sm:text-lg font-extrabold text-[#00f5d4]">
+                        {m.value}
+                      </div>
+                      <div className="text-[10px] font-semibold text-slate-200 mt-0.5">{m.label}</div>
+                      <div className="text-[9px] font-mono text-slate-400">{m.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* The Problem & Solution Snippet */}
+                <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
+                  <div>
+                    <strong className="text-red-400 font-mono">The Problem:</strong> {study.problem.substring(0, 160)}...
+                  </div>
+                  <div>
+                    <strong className="text-emerald-400 font-mono">The Impact:</strong> {study.impact.substring(0, 160)}...
+                  </div>
+                </div>
               </div>
 
-              {/* The Problem & Solution Snippet */}
-              <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
-                <div>
-                  <strong className="text-red-400 font-mono">The Problem:</strong> {study.problem.substring(0, 160)}...
-                </div>
-                <div>
-                  <strong className="text-emerald-400 font-mono">The Impact:</strong> {study.impact.substring(0, 160)}...
-                </div>
+              {/* Read Full Case Study Button */}
+              <div className="pt-6 mt-6 border-t border-[#1f2e4d]/60">
+                <button
+                  onClick={() => setSelectedCase(study)}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#121d36] hover:bg-[#1f2e4d] border border-[#1f2e4d] hover:border-[#00f5d4]/40 text-xs font-bold text-white transition-all group-hover:text-[#00f5d4] cursor-pointer"
+                >
+                  <span>Read Full Engineering Breakdown</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
-            </div>
 
-            {/* Read Full Case Study Button */}
-            <div className="pt-6 mt-6 border-t border-[#1f2e4d]/60">
-              <button
-                onClick={() => setSelectedCase(study)}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#121d36] hover:bg-[#1f2e4d] border border-[#1f2e4d] hover:border-[#00f5d4]/40 text-xs font-bold text-white transition-all group-hover:text-[#00f5d4]"
-              >
-                <span>Read Full Engineering Breakdown</span>
-                <ChevronRight className="w-4 h-4" />
-              </button>
             </div>
 
           </div>
@@ -172,7 +198,7 @@ export default function CaseStudies() {
               </div>
               <button
                 onClick={() => setSelectedCase(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#080d1a] transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#080d1a] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -181,6 +207,17 @@ export default function CaseStudies() {
             {/* Modal Body */}
             <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-300 text-xs sm:text-sm leading-relaxed">
               
+              {/* Optional Case Image in Modal */}
+              {selectedCase.image && (
+                <div className="rounded-xl overflow-hidden border border-[#1f2e4d] max-h-64">
+                  <img
+                    src={selectedCase.image}
+                    alt={selectedCase.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
               {/* Metrics Showcase */}
               <div className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-[#080d1a] border border-[#1f2e4d]">
                 {selectedCase.metrics.map((m, idx) => (
@@ -197,7 +234,7 @@ export default function CaseStudies() {
               {/* The Business Problem */}
               <div>
                 <h4 className="text-sm font-bold text-red-400 uppercase font-mono tracking-wider mb-2 flex items-center gap-2">
-                  <span>1. The Business Problem & Pain Points</span>
+                  <span>1. The Business Problem &amp; Pain Points</span>
                 </h4>
                 <p className="bg-[#080d1a] p-4 rounded-xl border border-red-500/20 text-slate-200">
                   {selectedCase.problem}
@@ -217,7 +254,7 @@ export default function CaseStudies() {
               {/* Architectural Trade-offs */}
               <div>
                 <h4 className="text-sm font-bold text-[#00f5d4] uppercase font-mono tracking-wider mb-3 flex items-center gap-2">
-                  <span>3. Architectural Decisions & Trade-Offs</span>
+                  <span>3. Architectural Decisions &amp; Trade-Offs</span>
                 </h4>
                 <div className="space-y-3">
                   {selectedCase.tradeoffs.map((t, idx) => (
@@ -236,7 +273,7 @@ export default function CaseStudies() {
               {/* End-to-End System Flow */}
               <div>
                 <h4 className="text-sm font-bold text-purple-400 uppercase font-mono tracking-wider mb-3 flex items-center gap-2">
-                  <span>4. Execution & Pipeline Flow</span>
+                  <span>4. Execution &amp; Pipeline Flow</span>
                 </h4>
                 <div className="p-4 rounded-xl bg-[#080d1a] border border-[#1f2e4d] space-y-2">
                   {selectedCase.architectureFlow.map((step, idx) => (
@@ -264,7 +301,7 @@ export default function CaseStudies() {
             <div className="bg-[#121d36] px-6 py-3.5 border-t border-[#1f2e4d] flex justify-end">
               <button
                 onClick={() => setSelectedCase(null)}
-                className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs"
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4] to-[#3b82f6] text-slate-950 font-bold text-xs cursor-pointer"
               >
                 Close Case Study
               </button>
