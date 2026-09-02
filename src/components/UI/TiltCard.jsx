@@ -1,18 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 export default function TiltCard({
   children,
   className = '',
   innerClassName = 'p-6 sm:p-7 flex flex-col justify-between h-full',
-  maxTilt = 8,
-  perspective = 1000,
+  maxTilt = 6,
   spotlightColor = 'rgba(0, 245, 212, 0.12)',
   ...props
 }) {
   const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const innerRef = useRef(null);
+  const spotlightRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -26,50 +24,48 @@ export default function TiltCard({
     const rotateX = ((y - centerY) / centerY) * -maxTilt;
     const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-    setTilt({ rotateX, rotateY });
-    setMousePos({ x, y });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+    if (innerRef.current) {
+      innerRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
+    if (spotlightRef.current) {
+      spotlightRef.current.style.opacity = '1';
+      spotlightRef.current.style.background = `radial-gradient(450px circle at ${x}px ${y}px, ${spotlightColor}, transparent 70%)`;
+    }
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ rotateX: 0, rotateY: 0 });
+    if (innerRef.current) {
+      innerRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    }
+    if (spotlightRef.current) {
+      spotlightRef.current.style.opacity = '0';
+    }
   };
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{
-        perspective: `${perspective}px`,
-        transformStyle: 'preserve-3d',
-      }}
-      className={`relative will-change-transform ${className}`}
+      className={`relative ${className}`}
       {...props}
     >
       <div
+        ref={innerRef}
         style={{
-          transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-          transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+          transition: 'transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease',
+          transformStyle: 'flat',
         }}
-        className="w-full h-full rounded-2xl overflow-hidden glass-card border border-[#1f2e4d] relative transition-shadow duration-300 hover:shadow-2xl hover:shadow-[#00f5d4]/10 hover:border-[#00f5d4]/40 flex flex-col"
+        className="w-full h-full rounded-2xl overflow-hidden glass-card border border-[#1f2e4d] relative hover:border-[#00f5d4]/40 hover:shadow-2xl hover:shadow-[#00f5d4]/10 flex flex-col"
       >
         {/* Dynamic Cursor Spotlight Radial Glow */}
         <div
-          className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-0"
-          style={{
-            opacity: isHovered ? 1 : 0,
-            background: `radial-gradient(450px circle at ${mousePos.x}px ${mousePos.y}px, ${spotlightColor}, transparent 70%)`,
-          }}
+          ref={spotlightRef}
+          className="pointer-events-none absolute -inset-px transition-opacity duration-300 opacity-0 z-0"
         />
         
-        {/* Inner Card Content with Proper Padding & Z-Index */}
-        <div className={`relative z-10 w-full ${innerClassName}`}>
+        {/* Inner Card Content with Guaranteed Pointer Events */}
+        <div className={`relative z-10 w-full pointer-events-auto ${innerClassName}`}>
           {children}
         </div>
       </div>

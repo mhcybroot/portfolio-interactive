@@ -57,35 +57,39 @@ pub async fn handle_adms_barrier_trigger(
                 <span className="text-xs font-mono text-slate-400">Rust 2024 • Axum • SeaORM</span>
               </div>
 
-              {/* In-Card Overview vs Code Switcher with Clean Icons */}
-              <div className="inline-flex items-center p-1 rounded-xl bg-[#060a14] border border-[#1f2e4d] text-xs font-mono">
+              {/* In-Card Overview vs Code Switcher with Guaranteed Clickability */}
+              <div className="inline-flex items-center p-1 rounded-xl bg-[#060a14] border border-[#1f2e4d] text-xs font-mono relative z-20">
                 <button
-                  onClick={() => {
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setPmsView('overview');
                     sound.playClick();
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer transition-all ${
                     pmsView === 'overview'
                       ? 'bg-[#101a30] text-[#00f5d4] font-bold border border-[#1f2e4d] shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Layers className="w-3 h-3" />
-                  <span>Overview</span>
+                  <Layers className="w-3 h-3 pointer-events-none" />
+                  <span className="pointer-events-none">Overview</span>
                 </button>
                 <button
-                  onClick={() => {
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setPmsView('code');
                     sound.playClick();
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer transition-all ${
                     pmsView === 'code'
                       ? 'bg-[#101a30] text-[#00f5d4] font-bold border border-[#1f2e4d] shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Code className="w-3 h-3" />
-                  <span>Source Code</span>
+                  <Code className="w-3 h-3 pointer-events-none" />
+                  <span className="pointer-events-none">Source Code</span>
                 </button>
               </div>
             </div>
@@ -127,19 +131,20 @@ pub async fn handle_adms_barrier_trigger(
             )}
           </div>
 
-          <div className="pt-4 border-t border-[#1f2e4d]/60 flex flex-wrap items-center justify-between gap-3">
+          <div className="pt-4 border-t border-[#1f2e4d]/60 flex flex-wrap items-center justify-between gap-3 relative z-20">
             <div className="flex flex-wrap gap-1.5">
               {["Rust 2024", "Axum 0.8", "Tokio", "SeaORM", "Flutter BLoC", "PostgreSQL"].map((t, i) => (
                 <span key={i} className="tech-pill text-[11px]">{t}</span>
               ))}
             </div>
 
-            {/* Sleek Pill Button for Repository */}
+            {/* Guaranteed Clickable Pill Button for Repository */}
             <a
               href="https://github.com/mhcybroot/PMS-V2"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-[#00f5d4]/60 text-xs font-mono font-semibold text-[#00f5d4] hover:shadow-md hover:shadow-[#00f5d4]/15 transition-all"
+              onClick={() => sound.playClick()}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-[#00f5d4]/60 text-xs font-mono font-semibold text-[#00f5d4] hover:shadow-md hover:shadow-[#00f5d4]/15 transition-all cursor-pointer"
             >
               <span>Repository</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -237,19 +242,20 @@ pub async fn handle_adms_barrier_trigger(
             </p>
           </div>
 
-          <div className="pt-4 border-t border-[#1f2e4d]/60 flex flex-wrap items-center justify-between gap-3">
+          <div className="pt-4 border-t border-[#1f2e4d]/60 flex flex-wrap items-center justify-between gap-3 relative z-20">
             <div className="flex flex-wrap gap-1.5">
               {["Spring Boot 3.4", "ZKTeco ADMS", "OpenPDF", "Apache POI", "WebSockets", "JPA Criteria"].map((b, i) => (
                 <span key={i} className="tech-pill text-[11px]">{b}</span>
               ))}
             </div>
 
-            {/* Sleek Pill Button for Backend Repo */}
+            {/* Guaranteed Clickable Pill Button for Backend Repo */}
             <a
               href="https://github.com/mhcybroot/Skylink-custom-backend"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-amber-400/60 text-xs font-mono font-semibold text-amber-400 hover:shadow-md hover:shadow-amber-400/15 transition-all"
+              onClick={() => sound.playClick()}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-amber-400/60 text-xs font-mono font-semibold text-amber-400 hover:shadow-md hover:shadow-amber-400/15 transition-all cursor-pointer"
             >
               <span>View Backend Repo</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -281,13 +287,14 @@ pub async fn handle_adms_barrier_trigger(
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#1f2e4d] flex items-center justify-between">
-            {/* Sleek Pill Button for Live Site */}
+          <div className="pt-4 border-t border-[#1f2e4d] flex items-center justify-between relative z-20">
+            {/* Guaranteed Clickable Pill Button for Live Site */}
             <a
               href="https://skylinkltd.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-purple-400/60 text-xs font-mono font-semibold text-purple-400 hover:shadow-md hover:shadow-purple-400/15 transition-all"
+              onClick={() => sound.playClick()}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#060a14] border border-[#1f2e4d] hover:border-purple-400/60 text-xs font-mono font-semibold text-purple-400 hover:shadow-md hover:shadow-purple-400/15 transition-all cursor-pointer"
             >
               <span>Visit Website</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
